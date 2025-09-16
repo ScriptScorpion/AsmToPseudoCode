@@ -12,6 +12,6 @@
 2. run `./pseudo your_file` (you get output in file with ".psc" extension) 
 
 
-# TO-DO:
+## TO-DO:
 * Make support for AT&T syntax
 * add support for `div` instruction
