@@ -10,3 +10,8 @@
 ## Usage:
 1. create file with extension of ".s" or ".S" or ".asm" and paste in this file commands you need to convert
 2. run `./pseudo your_file` (you get output in file with ".psc" extension) 
+
+
+# TO-DO:
+* Make support for AT&T syntax
+* add support for `div` instruction
