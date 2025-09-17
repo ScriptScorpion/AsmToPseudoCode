@@ -15,3 +15,5 @@
 ## TO-DO:
 * Make support for AT&T syntax
 * add support for `div` instruction
+* add support for `[]` specifier
+* add support for `()` specifier

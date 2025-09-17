@@ -18,6 +18,8 @@ constexpr std::array commands {
     "sub",
     "mul",
     "imul",
+    "dec",
+    "inc",
 };
 std::string search1(const std::string word) {
     std::string result = "";
@@ -26,7 +28,7 @@ std::string search1(const std::string word) {
         // just adjust counter to position
     }
     ++i; // + 1 because right now cursor at space position
-    for (; std::isalnum(word[i]); ++i) {
+    for (; std::isalnum(word[i]); i++) {
         result += word[i];
     }
     return result;
@@ -43,7 +45,7 @@ std::string search2(const std::string word) {
         // adjust counter for second position
     }
     ++i; // + 1 because right now cursor at space position
-    for (; std::isalnum(word[i]); ++i) {
+    for (; std::isalnum(word[i]); i++) {
         result += word[i];
     }
     return result;
@@ -53,11 +55,10 @@ std::string search2(const std::string word) {
 void setcommand(std::string word, std::string &which_command) { 
     std::string com = "";
     int i = 0;
-    while (word[i] == ' ') {
+    for (; word[i] == ' '; i++) {
         // adjust position
-        ++i;
     }
-    for (; i < word.length(); ++i) {
+    for (; i < word.length(); i++) {
         if (std::isalpha(word[i])) {
             com += word[i];
         }
@@ -89,6 +90,12 @@ void change(std::string &word, std::string &new_word, std::string &which_command
     else if (which_command == "mul" || which_command == "imul") {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '*' + ' ' + second_op;
     }
+    else if (which_command == "inc") {
+        new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '+' + ' ' + '1';
+    }
+    else if (which_command == "dec") {
+        new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '-' + ' ' + '1';
+    }
     else if (which_command == "mov") {
         new_word = first_op + ' ' + '=' + ' ' + second_op;
     }
@@ -102,7 +109,7 @@ void change(std::string &word, std::string &new_word, std::string &which_command
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '|' + ' ' +  second_op;
     }
     else if (which_command == "not") {
-        new_word = first_op + ' ' + '=' + ' ' + '!' + first_op;
+        new_word = first_op + ' ' + '=' + ' ' + '~' + first_op;
     }
     else if (which_command == "shr" || which_command == "sar") {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '>' + '>' + ' ' + second_op;
