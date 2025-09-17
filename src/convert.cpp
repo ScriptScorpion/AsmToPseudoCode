@@ -28,7 +28,7 @@ std::string search1(const std::string word) {
         // just adjust counter to position
     }
     ++i; // + 1 because right now cursor at space position
-    for (; std::isalnum(word[i]); i++) {
+    for (; std::isalnum(word[i]); ++i) {
         result += word[i];
     }
     return result;
@@ -45,7 +45,7 @@ std::string search2(const std::string word) {
         // adjust counter for second position
     }
     ++i; // + 1 because right now cursor at space position
-    for (; std::isalnum(word[i]); i++) {
+    for (; std::isalnum(word[i]); ++i) {
         result += word[i];
     }
     return result;
@@ -55,10 +55,10 @@ std::string search2(const std::string word) {
 void setcommand(std::string word, std::string &which_command) { 
     std::string com = "";
     int i = 0;
-    for (; word[i] == ' '; i++) {
+    for (; word[i] == ' '; ++i) {
         // adjust position
     }
-    for (; i < word.length(); i++) {
+    for (; i < word.length(); ++i) {
         if (std::isalpha(word[i])) {
             com += word[i];
         }
