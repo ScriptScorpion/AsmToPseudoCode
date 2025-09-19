@@ -10,6 +10,7 @@ constexpr std::array commands {
     "and",
     "or",
     "not",
+    "neg",
     "shr",
     "sar",
     "shl",
@@ -90,10 +91,10 @@ void change(std::string &word, std::string &new_word, std::string &which_command
     else if (which_command == "mul" || which_command == "imul") {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '*' + ' ' + second_op;
     }
-    else if (which_command == "inc") {
+    else if (which_command == "inc" && second_op.empty()) {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '+' + ' ' + '1';
     }
-    else if (which_command == "dec") {
+    else if (which_command == "dec" && second_op.empty()) {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '-' + ' ' + '1';
     }
     else if (which_command == "mov") {
@@ -108,8 +109,11 @@ void change(std::string &word, std::string &new_word, std::string &which_command
     else if (which_command == "or") {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '|' + ' ' +  second_op;
     }
-    else if (which_command == "not") {
+    else if (which_command == "not" && second_op.empty()) {
         new_word = first_op + ' ' + '=' + ' ' + '~' + first_op;
+    }
+    else if (which_command == "neg" && second_op.empty()) {
+        new_word = first_op + ' ' + '=' + ' ' + '-' + first_op; // (-1 * first_op)
     }
     else if (which_command == "shr" || which_command == "sar") {
         new_word = first_op + ' ' + '=' + ' ' + first_op + ' ' + '>' + '>' + ' ' + second_op;
